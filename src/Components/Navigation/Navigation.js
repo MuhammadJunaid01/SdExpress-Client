@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./Navigation.css";
-import { NavHashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
+import UsefireBase from "./../../coustomHook/useFirebase/UsefireBase";
 
 const Navigation = () => {
+  const { user, logOut } = UsefireBase();
   return (
     <div>
       <Navbar expand="lg">
@@ -34,7 +35,19 @@ const Navigation = () => {
               <Link className="link" to="/review">
                 REVEIW
               </Link>
+              {user?.email ? (
+                <Link onClick={logOut} className="link" to="">
+                  LOGOUT
+                </Link>
+              ) : (
+                <Link className="link" to="/loging">
+                  LOGING
+                </Link>
+              )}
             </Nav>
+            {user?.email && (
+              <img className="userImage" src={user?.photoURL} alt="" />
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

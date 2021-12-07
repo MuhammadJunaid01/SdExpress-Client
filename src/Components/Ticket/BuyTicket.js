@@ -12,18 +12,19 @@ import BuycarTicket from "./buyCarTicket/BuycarTicket";
 import "./buyticket.css";
 import BuyBoatTicket from "./buyBoatTicket/BuyBoatTicket";
 import BuyTexiTicket from "./buyTexiTicket/BuyTexiTicket";
+import BuyHondaTicket from "./buyHondaTicket/BuyHondaTicket";
 const BuyTicket = () => {
   const { path, url } = useRouteMatch();
   return (
     <Container>
-      <div className="buyTickitInfo">
-        <h1>Book Your Ticket</h1>
-      </div>
       <div className="buyTicketContainer">
         <Row>
           <Col sm={12} md={4}>
-            <Link className="nestedLink" to={`${url}/buyCarTicket`}>
-              Buy Car Ticket
+            <div className="">
+              <h1>Book Your Ticket</h1>
+            </div>
+            <Link className="nestedLink" to={`${url}/buyHondaTicket`}>
+              Buy Honda Ticket
             </Link>
             <Link className="nestedLink" to={`${url}/buyBoatTicket`}>
               Buy Boat Ticket
@@ -35,10 +36,10 @@ const BuyTicket = () => {
           <Col sm={12} md={8}>
             <Switch>
               <Route exact path={path}>
-                <BuycarTicket />
+                <BuyHondaTicket />
               </Route>
-              <Route path={`${path}/buyCarTicket`}>
-                <BuycarTicket />
+              <Route path={`${path}/buyHondaTicket`}>
+                <BuyHondaTicket />
               </Route>
               <Route path={`${path}/buyBoatTicket`}>
                 <BuyBoatTicket />

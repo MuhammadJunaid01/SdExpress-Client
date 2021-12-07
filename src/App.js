@@ -13,33 +13,41 @@ import About from "./Components/About/About";
 import Services from "./Components/Services/Services";
 import Contact from "./Components/contact/Contact";
 import Reviews from "./Components/Review/Reviews";
+import Loging from "./Components/loging/Loging";
+import AuthProvider from "./coustomHook/useAuth/AuthProvider";
+import PrivateRoute from "./privateRoute/PrivateRoute";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Navigation />
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/services">
-            <Services />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/review">
-            <Reviews />
-          </Route>
-        </Switch>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Navigation />
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <PrivateRoute path="/about">
+              <About />
+            </PrivateRoute>
+            <Route path="/services">
+              <Services />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/review">
+              <Reviews />
+            </Route>
+            <Route path="/loging">
+              <Loging />
+            </Route>
+          </Switch>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

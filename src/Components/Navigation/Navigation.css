@@ -9,3 +9,8 @@
   padding: 1px 5px;
   border-radius: 7px;
 }
+.userImage {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
